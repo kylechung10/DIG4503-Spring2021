@@ -1,10 +1,11 @@
 import React from 'react';
-import Search from './component/Search';
+import Menu from './component/Menu';
 
-function App() {
-  return (
-      <Search />
-    );
+class App extends React.Component {
+  render() {
+    return (
+        <Menu />
+      );
+  }
 }
-
 export default App;

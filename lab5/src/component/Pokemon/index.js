@@ -1,9 +1,11 @@
+import React from 'react';
+
 class Pokemon {
     constructor(pokemon) {
         this.pokemon = pokemon;
     }
 
-    passPokemon() {
+    render() {
         return (
     <div>
         <h1>Pokemon:</h1>    
