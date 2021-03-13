@@ -29,10 +29,6 @@ function Search() {
                     setLoading(false);
                 });
         }
-        //Passing the setState to the Pokemon component
-        const newPoke = pokemon;
-        //Creating a new object with user input values
-        const poke = new Pokemon(newPoke);
      
         return (
             <div>
@@ -44,7 +40,7 @@ function Search() {
                         <h1>Input a Pokemon name!</h1>
                     ) : (
                             (errorInput == false) ? (
-                                poke.render()
+                                <Pokemon pokemon={pokemon}/>
                             ) : (
                                     <div>
                                         <h1>Not Found!</h1>
