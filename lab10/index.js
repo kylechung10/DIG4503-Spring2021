@@ -16,18 +16,14 @@ App.put("/people/create", (req, res) => {
   let lName = req.body.lastName;
   let fColor = req.body.favoriteColor;
 
-  db.createOne(fName, lName, fColor);
-
-  //Respond with the document created
-  res.json(req.body);
-  console.log(req.body);
+  //Run the createOne function using parameters of the req.body and respond with the document created
+  db.createOne(fName, lName, fColor).then((response) => res.json(response));
 });
 
 App.get("/people/:person", (req, res) => {
-  db.readOne(req.params.person);
-
-  res.json(document);
-  console.log(document);
+  let search = req.params.person;
+  //Use Database method of readOne and respond with the document or {person: "not found"}
+  db.readOne(search).then((response) => res.json(response));
 });
 
 //Listen on port 45030

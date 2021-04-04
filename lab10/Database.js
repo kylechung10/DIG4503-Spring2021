@@ -32,22 +32,26 @@ export default class Database {
         lastName: lName,
         favoriteColor: fColor,
       };
-      //Pass data and create document
-      return await this.collection.insertOne(newData);
+      //Pass data into the people database
+      await this.collection.insertOne(newData);
+      //Return object with the properties used
+      return newData;
     }
   }
 
   async readOne(person) {
     if (this.collection != null) {
-      return await this.collection.findOne({
+      //Set variable to {search: "not found"} if cannot find the paramter in database
+      let searchData = { search: "not found" };
+      let results = await this.collection.findOne({
         firstName: person,
       });
-      //   let search = await this.collection.findOne({ firstName: person });
-      //   if (search != null) {
-      //     return search;
-      //   } else {
-      //     return { person: "not found" };
-      //   }
+      //If the search data returned then return the values from the object found
+      if (results != null) {
+        searchData = results;
+      }
+      //Return the data from the function
+      return searchData;
     }
   }
 
